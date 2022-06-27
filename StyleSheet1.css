@@ -1,0 +1,53 @@
+﻿.container {  /*Здесь мы стилизуем сам тект, чтобы он не заезжал на чекбокс, который мы нарисуем */
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+}
+
+    .container input { /* Прячем основную галочку, созданную автоматически*/
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+.checkmark { /*Создаём новый чекбокс, удовлетворяющий требования*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+
+.container input:checked ~ .checkmark { /*Меняем цвет фона галочки при нажатии*/
+    background-color: forestgreen;
+}
+
+.checkmark:after { /*Прячем нарисованную галочку для неотмечанных чекбоксах*/
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container input:checked ~ .checkmark:after { /*Делаем видимой нарисованную галочку для отмечанных чекбоксах*/
+    display: block;
+}
+
+.container .checkmark:after { /*Рисуем галочку(задаём прямоугольник, двух рамок нет, и поворачиваем*/
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
